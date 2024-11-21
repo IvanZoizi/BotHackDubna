@@ -66,7 +66,7 @@ async def past_education(call: types.CallbackQuery, dbase: DataBase):
         text = '<b>Ваши заявки</b>\n\n'
         for i in range(len(users)):
             child = users[i]
-            text += f"{emodsi[i % len(emodsi)]} <b>{child[2]} {child[1]} {child[3]}</b>, {child[4]}\n" \
-                    f"Запись в {child[5]}\n\n"
+            text += f"{emodsi[i % len(emodsi)]} <b>{child[2]} {child[1]} {child[3]}</b>, {child[4]}, {child[5]}\n\n"
 
         await call.message.answer(text, parse_mode='html', reply_markup=back_kb())
+

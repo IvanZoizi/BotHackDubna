@@ -8,9 +8,6 @@ from config import *
 from keyboards import *
 from databases import DataBase
 from users import doctors, communal_services, education, text_from_user
-from promts import *
-from gpt import gpt_request
-from states import *
 
 bot = Bot(token=token)
 dp = Dispatcher()
@@ -23,7 +20,6 @@ async def cmd_start(message: types.Message, state: FSMContext):
         "Привет, найду информацию и расскажу об услуге!",
         reply_markup=start_kb()
     )
-    # await state.set_state(StartState.text_of_user)
 
 
 @dp.callback_query(F.data == 'start')
@@ -34,16 +30,12 @@ async def start_cal(call: types.CallbackQuery, state: FSMContext):
         "Привет, найду информацию и расскажу об услуге!",
         reply_markup=start_kb()
     )
-    # await state.set_state(StartState.text_of_user)
 
 
-
-# @dp.callback_query(F.data == 'education')
-# async def start_education(call: types.CallbackQuery):
-#     await call.message.delete()
-#     await call.message.answer("Выберете, что вы хотите сделать?", reply_markup=start_education_kb())
-#
-#
+@dp.callback_query(F.data == 'does_not_work')
+async def does_not_work(call: types.CallbackQuery):
+    await call.message.delete()
+    await call.message.answer("<b>Функционал не реализован</b>", reply_markup=back_kb(), parse_mode='html')
 
 
 async def main():
