@@ -1,3 +1,4 @@
+import asyncio
 from random import shuffle
 
 from aiogram import Router, F, types
@@ -6,10 +7,11 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
 
 from keyboards import *
-from states import NewStates
+from states import SchoolStates, KindStates
 from databases import DataBase
 from gpt import gpt_request
 from promts import *
+
 
 router = Router()
 
@@ -19,9 +21,27 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
     await state.clear()
     text = gpt_request(message.text, promt_start)
     print(text)
-    if text == 'school':
-        await state.set_state(NewStates.name)
-        await message.answer("🧒 Чтобы записать ребенка в школу для начала напишите ФИО ребенка")
+    if 'school' in text:
+        data = text.split(',')
+        if len(data) == 1:
+            await state.set_state(SchoolStates.name)
+            await message.answer("🧒 Чтобы записать ребенка в школу для начала напишите ФИО ребенка")
+        else:
+            if 'None' not in data[1] and 'None' not in data[2]:
+                name, surname, fatherhood = data[1].split()
+                await state.update_data(name=name, surname=surname, fatherhood=fatherhood, year=data[2].strip())
+                await message.answer("Теперь выберете школу, в которую пойдет ваш ребенок",
+                                     reply_markup=choice_school_kb())
+                await state.set_state(SchoolStates.choose_school)
+            elif 'None' in data[1] and 'None' not in data[2]:
+                await state.update_data(year=data[2].strip())
+                await state.set_state(SchoolStates.name)
+                await message.answer("🧒 Чтобы записать ребенка в школу для начала напишите ФИО ребенка")
+            elif 'None' not in data[1] and 'None' in data[2]:
+                name, surname, fatherhood = data[1].split()
+                await state.update_data(name=name, surname=surname, fatherhood=fatherhood)
+                await message.answer("📅 Введите дату рождения ребенка")
+                await state.set_state(SchoolStates.year)
     elif text == 'past_education':
         users = dbase.get_educational_user_data(message.from_user.id)
         if not users:
