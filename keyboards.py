@@ -14,7 +14,7 @@ def start_kb():
 
 def back_kb():
     builder = InlineKeyboardBuilder()
-    builder.row(types.InlineKeyboardButton(text='Вернуться в меню', callback_data='start'))
+    builder.row(types.InlineKeyboardButton(text='🔙Вернуться в меню', callback_data='start'))
     return builder.as_markup()
 
 
@@ -26,7 +26,7 @@ def start_education_kb():
     builder.row(types.InlineKeyboardButton(text='👨‍💻Колледж', callback_data='does_not_work'))
     builder.row(types.InlineKeyboardButton(text='📝Прошлые записи', callback_data='past_education'))
     # builder.row(types.InlineKeyboardButton(text='📍Ближайшие учебные заведения', callback_data='geo_education'))
-    builder.row(types.InlineKeyboardButton(text='Вернуться в меню', callback_data='start'))
+    builder.row(types.InlineKeyboardButton(text='🔙Вернуться в меню', callback_data='start'))
     return builder.as_markup()
 
 
@@ -39,7 +39,7 @@ def start_doctors_kb():
     builder.row(types.InlineKeyboardButton(text='🏥 Прикрепиться к поликлинике', callback_data='does_not_work'))
     builder.row(types.InlineKeyboardButton(text='📝Прошлые записи', callback_data='past_doctors'))
     #builder.row(types.InlineKeyboardButton(text='📍Ближайшие учебные заведения', callback_data='geo_doctors'))
-    builder.row(types.InlineKeyboardButton(text='Вернуться в меню', callback_data='start'))
+    builder.row(types.InlineKeyboardButton(text='🔙Вернуться в меню', callback_data='start'))
     return builder.as_markup()
 
 

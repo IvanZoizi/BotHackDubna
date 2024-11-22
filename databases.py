@@ -16,3 +16,10 @@ class DataBase:
 
     def get_educational_user_data(self, user_id):
         return self.cur.execute("""SELECT * FROM user_education WHERE user_id = ?""", (user_id,)).fetchall()
+
+    def get_policy(self, user_id):
+        return self.cur.execute("""SELECT * FROM user_policy WHERE user_id = ?""", (user_id,)).fetchone()
+
+    def new_policy(self, user_id, code, name):
+        self.cur.execute("""INSERT INTO user_policy VALUES(?, ?, ?)""", (user_id, code, name))
+        self.con.commit()
