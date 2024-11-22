@@ -64,3 +64,26 @@ def choice_school_kb():
     builder.row(types.InlineKeyboardButton(text='⛪️ Средняя общеобразовательная школа', callback_data='mou'))
     builder.row(types.InlineKeyboardButton(text='🏤Гимназия', callback_data='gim'))
     return builder.as_markup()
+
+
+def doctors_kb():
+    builder = InlineKeyboardBuilder()
+    builder.row(types.InlineKeyboardButton(text='Офтальмолог', callback_data='ophthalmologist'))
+    builder.row(types.InlineKeyboardButton(text='Невролог', callback_data='neurologist'))
+    builder.row(types.InlineKeyboardButton(text='Стоматолог', callback_data='dentist'))
+    return builder.as_markup()
+
+
+def time_choice_kb():
+    builder = InlineKeyboardBuilder()
+    builder.row(types.InlineKeyboardButton(text='Сегодня', callback_data='today'))
+    builder.row(types.InlineKeyboardButton(text='Завтра', callback_data='tomorrow'))
+    builder.row(types.InlineKeyboardButton(text='Послезавтра', callback_data='day_after_tomorrow'))
+    return builder.as_markup()
+
+
+def policy_settings_kb():
+    builder = InlineKeyboardBuilder()
+    builder.row(types.InlineKeyboardButton(text='📄 Получить полис', callback_data='get_policy'),
+                types.InlineKeyboardButton(text='📄 Изменить полис', callback_data='edit_policy'))
+    return builder.as_markup()

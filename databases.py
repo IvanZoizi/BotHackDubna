@@ -24,6 +24,10 @@ class DataBase:
         self.cur.execute("""INSERT INTO user_policy VALUES(?, ?, ?)""", (user_id, code, name))
         self.con.commit()
 
+    def edit_policy(self, user_id, policy):
+        self.cur.execute("""UPDATE user_policy SET code = ? WHERE user_id = ?""", (policy, user_id,))
+        self.con.commit()
+
     def get_communal_services(self, user_id):
         return self.cur.execute("""SELECT * FROM user_communal_services WHERE user_id = ?""", (user_id,)).fetchone()
 

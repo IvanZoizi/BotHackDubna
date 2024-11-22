@@ -15,6 +15,7 @@ class KindStates(StatesGroup):
 class PolicyStates(StatesGroup):
     code = State()
     name = State()
+    edit_policy = State()
 
 
 class DoctorStates(StatesGroup):
@@ -29,3 +30,8 @@ class Communal(StatesGroup):
     cold_water = State()
     electric = State()
     hot_pipe = State()
+
+
+class DoctorAppointmentStates(StatesGroup):
+    doctor = State()
+    time = State()

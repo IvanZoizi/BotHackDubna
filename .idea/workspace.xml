@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f976bfb5-25c7-4285-a81d-7a8ffff2ab0c" name="Changes" comment="Удалил лишнее">
+    <list default="true" id="f976bfb5-25c7-4285-a81d-7a8ffff2ab0c" name="Changes" comment="Доделали ветку ЖКХ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/databases.py" beforeDir="false" afterPath="$PROJECT_DIR$/databases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpt.py" beforeDir="false" afterPath="$PROJECT_DIR$/gpt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/keyboards.py" beforeDir="false" afterPath="$PROJECT_DIR$/keyboards.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/promts.py" beforeDir="false" afterPath="$PROJECT_DIR$/promts.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" afterPath="$PROJECT_DIR$/states.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/communal_services.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/communal_services.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/doctors.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/doctors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/text_from_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/text_from_user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +52,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zoizi\PycharmProjects\BotHack\users" />
       <recent name="C:\Users\Zoizi\PycharmProjects\BotHack" />
     </key>
   </component>
@@ -227,7 +222,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732280707048</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Доделали ветку ЖКХ">
+      <created>1732285616070</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1732285616070</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -247,7 +249,8 @@
     <MESSAGE value="Прикрутил ИИ к ветке со школой" />
     <MESSAGE value="Начал делать ветку врачей" />
     <MESSAGE value="Удалил лишнее" />
-    <option name="LAST_COMMIT_MESSAGE" value="Удалил лишнее" />
+    <MESSAGE value="Доделали ветку ЖКХ" />
+    <option name="LAST_COMMIT_MESSAGE" value="Доделали ветку ЖКХ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -314,6 +317,11 @@
           <url>file://$PROJECT_DIR$/users/text_from_user.py</url>
           <line>110</line>
           <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$USER_HOME$/AppData/Local/Temp/68a2e5e8-6fa5-4ec4-9556-d815231aa737_BotHackDubna2.zip.737/BotHackDubna2/states.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
