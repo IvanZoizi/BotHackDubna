@@ -85,19 +85,39 @@ async def kindergarten(call: types.CallbackQuery, state: FSMContext):
 
 
 @router.message(StateFilter(KindStates.name))
-async def kindergarten_name(message: types.Message, state: FSMContext):
+async def kindergarten_name(message: types.Message, state: FSMContext, dbase: DataBase):
     surname, name, fatherhood = message.text.split()
     await state.update_data(name=name, surname=surname, fatherhood=fatherhood)
-    await message.answer("📅 Введите дату рождения ребенка")
-    await state.set_state(KindStates.year)
+    data = await state.get_data()
+    if 'year' not in list(data):
+        await message.answer("📅 Введите дату рождения ребенка")
+        await state.set_state(KindStates.year)
+    else:
+        data = await state.get_data()
+        await state.clear()
+        check = dbase.get_educational_user(data['name'], data['surname'])
+        if not check:
+            await message.answer("<b>Вы уже пытались записать ребенка, попробуйте еще раз</b>",
+                                 reply_markup=back_kb(), parse_mode='html')
+        dbase.new_educational_user(message.from_user.id, data['name'], data['surname'], data['fatherhood'],
+                                   data['year'],
+                                   'Детский сад')
+        await message.answer("<b>Скоро мы подберем вам детский сад и свяжемся с вами!</b>", parse_mode='html',
+                             reply_markup=back_kb())
 
 
 @router.message(StateFilter(KindStates.year))
-async def kindergarten_year(message: types.Message, state: FSMContext):
-    surname, name, fatherhood = message.text.split()
-    await state.update_data(name=name, surname=surname, fatherhood=fatherhood)
-    await message.answer("📅 Введите дату рождения ребенка")
-    await state.set_state(KindStates.year)
+async def kindergarten_year(message: types.Message, state: FSMContext, dbase: DataBase):
+    await state.update_data(year=message.text)
+    data = await state.get_data()
+    await state.clear()
+    check = dbase.get_educational_user(data['name'], data['surname'])
+    if not check:
+        await message.answer("<b>Вы уже пытались записать ребенка, попробуйте еще раз</b>",
+                             reply_markup=back_kb(), parse_mode='html')
+    dbase.new_educational_user(message.from_user.id, data['name'], data['surname'], data['fatherhood'], data['year'],
+                               'Детский сад')
+    await message.answer("<b>Скоро мы подберем вам детский сад и свяжемся с вами!</b>", parse_mode='html', reply_markup=back_kb())
 
 
 

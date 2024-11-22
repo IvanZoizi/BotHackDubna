@@ -42,6 +42,32 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
                 await state.update_data(name=name, surname=surname, fatherhood=fatherhood)
                 await message.answer("📅 Введите дату рождения ребенка")
                 await state.set_state(SchoolStates.year)
+    elif 'kindergarten' in text:
+        data = text.split(',')
+        if len(data) == 1:
+            await state.set_state(KindStates.name)
+            await message.answer("🧒 Чтобы записать ребенка в школу для начала напишите ФИО ребенка")
+        else:
+            if 'None' not in data[1] and 'None' not in data[2]:
+                name, surname, fatherhood = data[1].split()
+                check = dbase.get_educational_user(name, surname)
+                if not check:
+                    await message.answer("<b>Вы уже пытались записать ребенка, попробуйте еще раз</b>",
+                                         reply_markup=back_kb(), parse_mode='html')
+                dbase.new_educational_user(message.from_user.id, name, surname, fatherhood,
+                                           data[2],
+                                           'Детский сад')
+                await message.answer("<b>Скоро мы подберем вам детский сад и свяжемся с вами!</b>", parse_mode='html',
+                                     reply_markup=back_kb())
+            elif 'None' in data[1] and 'None' not in data[2]:
+                await state.update_data(year=data[2].strip())
+                await state.set_state(KindStates.name)
+                await message.answer("🧒 Чтобы записать ребенка в школу для начала напишите ФИО ребенка")
+            elif 'None' not in data[1] and 'None' in data[2]:
+                name, surname, fatherhood = data[1].split()
+                await state.update_data(name=name, surname=surname, fatherhood=fatherhood)
+                await message.answer("📅 Введите дату рождения ребенка")
+                await state.set_state(KindStates.year)
     elif text == 'past_education':
         users = dbase.get_educational_user_data(message.from_user.id)
         if not users:
