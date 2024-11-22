@@ -94,8 +94,34 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
         else:
             await message.answer("У вас еще не установлен медицинский полис, в виде его код")
             await state.set_state(PolicyStates.code)
-    elif text == 'communal_services':
-        await message.answer('...', reply_markup=start_communal_services_kb())
+    elif 'communal_services' in text:
+        data = text.split(',')
+        if len(data) == 1:
+            await message.answer("Выберете, что вы хотите сделать?", reply_markup=start_communal_services_kb())
+        else:
+            data_user = dbase.get_communal_services(message.from_user.id)
+            columns = ['hot_water', 'cold_water', 'gas', 'electric']
+            for i in range(len(data_user[1:])):
+                elem = data[i + 1]
+                if 'None' not in elem:
+                    try:
+                        if int(elem) < 0:
+                            continue
+                        if int(elem) < int(data_user[i + 1]):
+                            continue
+                    except ValueError:
+                        pass
+                    dbase.edit_communal_services(message.from_user.id, columns[i], int(elem))
+            await message.answer('Ваши показания по электричеству обновлены.\nЧто будем делать дальще?',
+                                 reply_markup=start_communal_services_kb())
+    elif text == 'score':
+        data = dbase.get_communal_services(message.from_user.id)
+        await message.answer(f'Ваши данные по счётчикам:\n\n'
+                                     f'Горячая вода: {data[1] if data[1] != -1 else "Показаний нету"}\n'
+                                     f'Холодная вода: {data[2] if data[2] != -1 else "Показаний нету"}\n'
+                                     f'Отопление: {data[3] if data[3] != -1 else "Показаний нету"}\n'
+                                     f'Электричество: {data[4] if data[4] != -1 else "Показаний нету"}',
+                                     reply_markup=start_communal_services_kb())
     elif text == 'avto':
         await message.answer('...', reply_markup=start_avto_kb())
     elif text == 'does_not_work':

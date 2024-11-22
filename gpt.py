@@ -4,7 +4,7 @@ from config import *
 
 def gpt_request(message_user, promt):
     client = OpenAI(
-        api_key='sk-381QmklNWpztqYYST3rcxoE0gpwNoHpP',
+        api_key='sk-1KvDS6YrzbUDFNPfGhW6IhGLNpM6uTpg',
         base_url="https://api.proxyapi.ru/openai/v1",
     )
     #
@@ -23,4 +23,4 @@ def gpt_request(message_user, promt):
 
 
 if __name__ == '__main__':
-    print(gpt_request('Треш'))
+    print(gpt_request('Треш', 'Привет'))

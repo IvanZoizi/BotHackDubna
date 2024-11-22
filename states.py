@@ -22,3 +22,10 @@ class DoctorStates(StatesGroup):
     name = State()
     doctor = State()
     time_ = State()
+
+
+class Communal(StatesGroup):
+    hot_water = State()
+    cold_water = State()
+    electric = State()
+    hot_pipe = State()

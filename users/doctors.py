@@ -34,9 +34,6 @@ async def policy_code(message: types.Message, state: FSMContext):
     await state.update_data(code=message.text)
     await message.answer("Введите ваше имя")
     await state.set_state(PolicyStates.name)
-    #dbase.new_policy(message.from_user.id, message.text)
-    #await state.clear()
-    #await message.answer("<b>Ваша заявка принята</b>", reply_markup=start_doctors_kb(), parse_mode='html')
 
 
 @router.message(StateFilter(PolicyStates.name))

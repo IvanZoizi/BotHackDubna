@@ -16,6 +16,7 @@ dbase = DataBase('./db.sqlite')
 
 @dp.message(Command("start"), StateFilter('*'))
 async def cmd_start(message: types.Message, state: FSMContext):
+    dbase.new_communal_services(message.from_user.id)
     await state.clear()
     await message.answer(
         "Привет, найду информацию и расскажу об услуге!",

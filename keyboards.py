@@ -38,35 +38,26 @@ def start_doctors_kb():
                 types.InlineKeyboardButton(text='🏖 Санаторий', callback_data='does_not_work'))  # Sanatorium
     builder.row(types.InlineKeyboardButton(text='🏥 Прикрепиться к поликлинике', callback_data='does_not_work'))
     builder.row(types.InlineKeyboardButton(text='📝Прошлые записи', callback_data='past_doctors'))
-    #builder.row(types.InlineKeyboardButton(text='📍Ближайшие учебные заведения', callback_data='geo_doctors'))
+    # builder.row(types.InlineKeyboardButton(text='📍Ближайшие учебные заведения', callback_data='geo_doctors'))
     builder.row(types.InlineKeyboardButton(text='🔙Вернуться в меню', callback_data='start'))
     return builder.as_markup()
 
 
 def start_communal_services_kb():
-    pass
+    builder = InlineKeyboardBuilder()
+    builder.row(types.InlineKeyboardButton(text='💧Внести показания горячей воды', callback_data='hot_water'))
+    builder.row(types.InlineKeyboardButton(text='💧Холодной воды', callback_data='cold_water'),
+                (types.InlineKeyboardButton(text='🌫Отопления', callback_data='gas')))
+    builder.row(types.InlineKeyboardButton(text='💡Электричества', callback_data='electric'))
+    builder.row(types.InlineKeyboardButton(text='📊Вывести данные по счётчикам', callback_data='score'))
+    builder.row(types.InlineKeyboardButton(text='🔙Вернуться в меню', callback_data='start'))
+    return builder.as_markup()
 
 
 def start_avto_kb():
     pass
 
 
-# def doctors_choice_kb():
-#     builder = InlineKeyboardBuilder()
-#     builder.row(types.InlineKeyboardButton(text='👓 Офтальмолог', callback_data='time_choice'))
-#     builder.row(types.InlineKeyboardButton(text='🧠 Невролог', callback_data='time_choice'))
-#     builder.row(types.InlineKeyboardButton(text='🦷 Стоматолог', callback_data='time_choice'))
-#     return builder.as_markup()
-#
-#
-# def time_choice_kb():
-#     builder = InlineKeyboardBuilder()
-#     builder.row(types.InlineKeyboardButton(text='🕘 26.11.24 17:30', callback_data='success'))
-#     builder.row(types.InlineKeyboardButton(text='🕘 26.11.24 18:00', callback_data='success'))
-#     builder.row(types.InlineKeyboardButton(text='🕘 26.11.24 18:30', callback_data='success'))
-#     return builder.as_markup()
-#
-#
 def choice_school_kb():
     builder = InlineKeyboardBuilder()
     builder.row(types.InlineKeyboardButton(text='🏫 Лицей', callback_data='lyceum'))
