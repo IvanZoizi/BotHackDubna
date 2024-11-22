@@ -7,7 +7,7 @@ from aiogram.fsm.context import FSMContext
 from config import *
 from keyboards import *
 from databases import DataBase
-from users import doctors, communal_services, education, text_from_user
+from users import doctors, communal_services, education, text_from_user, avto
 
 bot = Bot(token=token)
 dp = Dispatcher()
@@ -42,7 +42,7 @@ async def does_not_work(call: types.CallbackQuery):
 async def main():
     await bot.delete_webhook(drop_pending_updates=True)
 
-    dp.include_routers(doctors.router, education.router, text_from_user.router)
+    dp.include_routers(doctors.router, education.router, text_from_user.router, avto.router, communal_services.router)
 
     await dp.start_polling(bot, dbase=dbase)
 
