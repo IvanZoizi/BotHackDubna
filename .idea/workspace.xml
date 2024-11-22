@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f976bfb5-25c7-4285-a81d-7a8ffff2ab0c" name="Changes" comment="Прикрутил ИИ к ветке со школой">
       <change afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/promts.py" beforeDir="false" afterPath="$PROJECT_DIR$/promts.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/education.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/education.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/text_from_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/text_from_user.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +153,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732221732673</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Прикрутил ИИ к ветке со школой">
+      <created>1732256527276</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1732256527276</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
