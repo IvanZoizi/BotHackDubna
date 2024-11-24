@@ -81,7 +81,7 @@ async def make_appointment(call: types.CallbackQuery, dbase: DataBase, state: FS
     if policy:
         await call.message.answer('Выберете врача', reply_markup=doctors_kb())
         await state.update_data(go_doctor='1')
-        await state.set_state(DoctorAppointmentStates.time)
+        await state.set_state(DoctorAppointmentStates.doctor)
     else:
         await call.message.answer("<b>У вас еще не установлен медицинский полис</b>\n"
                                   "Чтобы прикрепить полис, <b>введите его код</b>", parse_mode='html')
@@ -91,9 +91,10 @@ async def make_appointment(call: types.CallbackQuery, dbase: DataBase, state: FS
 @router.callback_query(StateFilter(DoctorAppointmentStates.doctor))
 async def doctor_choice(call: types.CallbackQuery, state: FSMContext):
     dict_data = {'ophthalmologist': 'Офтальмолог', 'neurologist': 'Невролог', 'dentist': 'Стомотолог'}
-    await state.update_data(doctor=dict_data[call.data])
+    print(call.data)
+    await state.update_data(doctor=dict_data[str(call.data)])
     await call.message.answer("Выберете день, в которой вы сможете пойти", reply_markup=time_choice_kb())
-    await state.update_data(DoctorAppointmentStates.time)
+    await state.set_state(DoctorAppointmentStates.time)
 
 
 @router.callback_query(StateFilter(DoctorAppointmentStates.time))
@@ -101,6 +102,6 @@ async def time_choice(call: types.CallbackQuery, state: FSMContext):
     dict_data = {'today': 'Сегодня', 'tomorrow': 'Завтра', 'day_after_tomorrow': 'Послезавтра'}
     await state.update_data(day=dict_data[call.data])
     await call.message.answer("Выберете день, в которой вы сможете пойти", reply_markup=time_choice_kb())
-    await state.update_data()
+    await state.set_state()
 
 
