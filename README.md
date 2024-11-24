@@ -2,4 +2,6 @@
 
 
 pip install -r ./requirements.txt 
+
+
 python main.py или python3 main.py
