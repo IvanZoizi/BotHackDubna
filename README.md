@@ -5,3 +5,12 @@ pip install -r ./requirements.txt
 
 
 python main.py или python3 main.py
+
+
+Еще необходимо создать файл config.py, в котором нужно создать token и gpt_token
+
+
+В первую переменную нужно записать токен телеграм, в другую токен gpt
+
+
+Вы можете написать мне в Телеграмме и я вам выдам тестовые токены - @ivan_zakharov123
