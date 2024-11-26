@@ -86,8 +86,8 @@ async def hot_trub1(message: Message, state: FSMContext, dbase: DataBase):
 
 @router.callback_query(F.data == 'electric')
 async def electric(call: CallbackQuery, state: FSMContext):
-    await state.set_state(Communal.hot_pipe)
-    await call.message.edit_text('Введите показания отопления:')
+    await state.set_state(Communal.electric)
+    await call.message.edit_text('Введите показания электричества:')
 
 
 @router.message(Communal.electric)

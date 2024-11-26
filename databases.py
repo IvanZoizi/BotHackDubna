@@ -28,6 +28,18 @@ class DataBase:
         self.cur.execute("""UPDATE user_policy SET code = ? WHERE user_id = ?""", (policy, user_id,))
         self.con.commit()
 
+    def doctor_appointment(self, user_id, doctor, day, time):
+        self.cur.execute('''INSERT INTO user_doctor VALUES(?, ?, ?, ?)''', (user_id, doctor, day, time,))
+        self.con.commit()
+
+    # -------- тут менял ------------
+    def get_appointments(self, user_id):
+        return self.cur.execute('''SELECT * FROM user_doctor WHERE user_id = ?''', (user_id,))
+
+    def get_day_time(self, user_id):
+        return self.cur.execute('''SELECT day, time FROM user_doctor WHERE user_id = ?''', (user_id,))
+    # -------------------------------
+
     def get_communal_services(self, user_id):
         return self.cur.execute("""SELECT * FROM user_communal_services WHERE user_id = ?""", (user_id,)).fetchone()
 

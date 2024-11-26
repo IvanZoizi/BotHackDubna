@@ -7,7 +7,7 @@ from aiogram.fsm.context import FSMContext
 from aiogram.types import Message, ReplyKeyboardRemove
 
 from keyboards import *
-from states import SchoolStates, KindStates, PolicyStates
+from states import SchoolStates, KindStates, PolicyStates, DoctorAppointmentStates
 from databases import DataBase
 from gpt import gpt_request
 from promts import *
@@ -85,15 +85,34 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
     elif text == 'education':
         await message.answer("Выберете, что вы хотите сделать?", reply_markup=start_education_kb())
     elif text == 'doctors':
-        await message.answer('...', reply_markup=start_doctors_kb())
+        await message.answer('Выберите, что вы хотите сделать?', reply_markup=start_doctors_kb())
+    elif text == 'edit_policy':
+        await message.answer('Введите свой новый полис:')
+        await state.set_state(PolicyStates.edit_policy)
     elif text == 'policy':
         policy = dbase.get_policy(message.from_user.id)
         if policy:
-            await message.answer(f"<b>Ваш код медицинского полиса - {policy[2]}</b>", reply_markup=back_kb(),
-                                      parse_mode='html')
+            await message.answer('Выберите, что вы хотите сделать:', reply_markup=policy_settings_kb())
         else:
-            await message.answer("У вас еще не установлен медицинский полис, в виде его код")
+            await message.answer("<b>У вас еще не установлен медицинский полис</b>\n"
+                                      "Чтобы прикрепить полис, <b>введите его код</b>", parse_mode='html')
             await state.set_state(PolicyStates.code)
+    elif 'make_appointment' in text:
+        data = text.split(',')
+        policy = dbase.get_policy(message.from_user.id)
+        if not policy:
+            await message.answer("<b>У вас еще не установлен медицинский полис</b>\n"
+                                      "Чтобы прикрепить полис, <b>введите его код</b>", parse_mode='html')
+            await state.set_state(PolicyStates.code)
+        if 'None' in data[1]:
+            await message.answer('Выберите врача', reply_markup=doctors_kb())
+            await state.update_data(go_doctor='1')
+            await state.set_state(DoctorAppointmentStates.doctor)
+        else:
+            await state.update_data(doctor=data[1].strip())
+            await message.answer("<b>Выберите день, в которой вы сможете пойти</b>", reply_markup=day_choice_kb(),
+                                      parse_mode='html')
+            await state.set_state(DoctorAppointmentStates.time)
     elif 'communal_services' in text:
         data = text.split(',')
         if len(data) == 1:
@@ -112,7 +131,7 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
                     except ValueError:
                         pass
                     dbase.edit_communal_services(message.from_user.id, columns[i], int(elem))
-            await message.answer('Ваши показания по электричеству обновлены.\nЧто будем делать дальще?',
+            await message.answer('Ваши показания обновлены.\nЧто будем делать дальще?',
                                  reply_markup=start_communal_services_kb())
     elif text == 'score':
         data = dbase.get_communal_services(message.from_user.id)
@@ -123,7 +142,9 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
                                      f'Электричество: {data[4] if data[4] != -1 else "Показаний нету"}',
                                      reply_markup=start_communal_services_kb())
     elif text == 'avto':
-        await message.answer('...', reply_markup=start_avto_kb())
+        await message.answer("Выберете, что вы хотите сделать?", reply_markup=start_avto_kb())
+    elif text == 'technic':
+        await message.answer("Что вы хотите поставить на учёт?", reply_markup=accounting_kb())
     elif text == 'does_not_work':
         await message.answer("<b>Функционал не реализован</b>", reply_markup=back_kb(), parse_mode='html')
     else:

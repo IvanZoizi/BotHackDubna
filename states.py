@@ -31,7 +31,21 @@ class Communal(StatesGroup):
     electric = State()
     hot_pipe = State()
 
-
+# тут менял
 class DoctorAppointmentStates(StatesGroup):
     doctor = State()
+    day = State()
     time = State()
+    finish = State()
+
+
+class CarStates(StatesGroup):
+    auto_tipe = State()
+    name_auto = State()
+    PTS = State()
+    number_reg = State()
+    number_passport = State()
+    number_purchase_and_sale_agreement = State()
+    number_OSAGO = State()
+    UIN_GOS_the_fee = State()
+    number_transport_vehicle = State()
