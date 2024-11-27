@@ -4,28 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f976bfb5-25c7-4285-a81d-7a8ffff2ab0c" name="Changes" comment="Доделали ветку ЖКХ">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BotHack.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/databases.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gpt.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keyboards.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/promts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/states.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/avto.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/communal_services.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/doctors.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/education.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/text_from_user.py" beforeDir="false" />
-    </list>
+    <list default="true" id="f976bfb5-25c7-4285-a81d-7a8ffff2ab0c" name="Changes" comment="Готово" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -244,7 +223,14 @@
       <option name="project" value="LOCAL" />
       <updated>1732285616070</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Готово">
+      <created>1732650319906</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1732650319906</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -265,7 +251,8 @@
     <MESSAGE value="Начал делать ветку врачей" />
     <MESSAGE value="Удалил лишнее" />
     <MESSAGE value="Доделали ветку ЖКХ" />
-    <option name="LAST_COMMIT_MESSAGE" value="Доделали ветку ЖКХ" />
+    <MESSAGE value="Готово" />
+    <option name="LAST_COMMIT_MESSAGE" value="Готово" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -274,6 +261,11 @@
           <url>file://$USER_HOME$/AppData/Local/Temp/68a2e5e8-6fa5-4ec4-9556-d815231aa737_BotHackDubna2.zip.737/BotHackDubna2/states.py</url>
           <line>14</line>
           <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/main.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="23" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

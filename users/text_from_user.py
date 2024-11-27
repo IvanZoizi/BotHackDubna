@@ -147,6 +147,8 @@ async def start_answer_user(message: types.Message, state: FSMContext, dbase: Da
         await message.answer("Что вы хотите поставить на учёт?", reply_markup=accounting_kb())
     elif text == 'does_not_work':
         await message.answer("<b>Функционал не реализован</b>", reply_markup=back_kb(), parse_mode='html')
+    elif text == 'bad':
+        await message.answer("<b>Я не понимаю о чем вы говорите</b>", reply_markup=start_kb(), parse_mode='html')
     else:
         await message.answer("Возможно я не смогу вам помочь с данным вопросов, скоро к вам подключиться ассистент и поможет вам",
                              reply_markup=back_kb())
